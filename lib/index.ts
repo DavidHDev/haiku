@@ -46,3 +46,7 @@ export { RenderAfter } from './utils/RenderAfter';
 export { Class } from './utils/Class';
 export { Switch } from './utils/Switch';
 export { Image } from './utils/Image';
+
+// for default import
+import ErrorBoundary from './utils/ErrorBoundary';
+export { ErrorBoundary };
