@@ -11,5 +11,5 @@ export const off = <T extends EventTarget, A extends any[]>(
   ...args: A
 ) => {
   // @ts-ignore
-  if (obj && obj.addEventListener) obj.removeEventListener(...args);
+  if (obj && obj.removeEventListener) obj.removeEventListener(...args);
 };
