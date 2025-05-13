@@ -1,0 +1,33 @@
+# useScreenSize()
+
+The `useScreenSize()` hook allows responsive breakpoint detection in components. It returns helper methods (`equals`, `lessThan`, `greaterThan`) and a string method (`toString`) representing the current screen size: `xs`, `sm`, `md`, `lg`, `xl`, or `2xl for size bigger than 1535 pixel`.
+
+### Import
+
+```jsx
+import { useScreenSize } from 'react-haiku';
+```
+
+
+### Usage
+
+import { UseScreenSizeDemo } from '../../demo/UseScreenSizeDemo.jsx';
+
+<UseScreenSizeDemo />
+
+```jsx
+import { useScreenSize } from 'react-haiku';
+
+export const MyComponent = () => {
+  const screenSize = useScreenSize();
+
+  return (
+    <div>
+      <h1>Current Screen Size: {screenSize.toString()}</h1>
+      <p>Is the screen size medium? {screenSize.equals("md") ? "Yes" : "No"}</p>
+      <p>Is the screen size less than large? {screenSize.lessThan("lg") ? "Yes" : "No"}</p>
+      <p>Is the screen size greater than small? {screenSize.greaterThan("sm") ? "Yes" : "No"}</p>
+    </div>
+  );
+};
+```
