@@ -36,6 +36,7 @@ export { useOrientation } from './hooks/useOrientation';
 export { useWindowSize } from './hooks/useWindowSize';
 export { useIntersectionObserver } from './hooks/useIntersectionObserver';
 export { usePreventBodyScroll } from './hooks/usePreventBodyScroll';
+export { usePrevious } from './hooks/usePrevious';
 export { useKeyPress } from './hooks/useKeyPress';
 export { useScrollDevice } from './hooks/useScrollDevice';
 
