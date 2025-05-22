@@ -1,0 +1,72 @@
+# Error Boundary
+
+The `ErrorBoundary` component is a utility component that catches errors in its child component tree, logs the error, and prevents the entire application from crashing by rendering a fallback UI instead..
+
+### Import
+
+```jsx
+import { ErrorBoundary } from 'react-haiku';
+```
+
+### Usage
+
+import { ErrorBoundaryDemo } from '../../demo/ErrorBoundaryDemo.tsx';
+
+<ErrorBoundaryDemo />
+
+```tsx
+import React from 'react';
+import { ErrorBoundary } from 'react-haiku';
+
+// Component that will intentionally cause an error
+const CrashComponent: React.FC = () => {
+  throw new Error('This is a test error inside the ErrorBoundary!');
+};
+
+export const ErrorBoundaryDemo: React.FC = () => {
+  return (
+    <ErrorBoundary fallback={Fallback}>
+      <CrashComponent />
+    </ErrorBoundary>
+  );
+};
+```
+
+### Fallback
+
+You can access `retry`, `error` and `errorInfo` prop in you Fallback component which you can use to create a dynamic UI.
+
+```tsx
+interface FallbackProps {
+  retry: () => void;
+  error: Error | null;
+  errorInfo: React.ErrorInfo | null;
+}
+
+const Fallback: React.FC<FallbackProps> = ({ retry }) => {
+  return (
+    <div className="demo-container-center">
+      <b style={{ marginBottom: '1em' }}>We faced an error</b>
+      <button
+        className="demo-button"
+        onClick={retry}
+        style={{ marginBottom: '1em' }}
+      >
+        Retry
+      </button>
+    </div>
+  );
+};
+```
+
+### API
+
+The **ErrorBoundary** accepts the following props:
+
+- `fallback` - Component to render when an error is occured in child components.
+
+The **Fallback** receives the following props:
+
+- `retry` - Function to retry/reload the wrapped component.
+- `error` - error of type **Error**
+- `errorInfo` - error info of type **React.ErrorInfo**
