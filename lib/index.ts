@@ -39,6 +39,7 @@ export { usePreventBodyScroll } from './hooks/usePreventBodyScroll';
 export { usePrevious } from './hooks/usePrevious';
 export { useKeyPress } from './hooks/useKeyPress';
 export { useScrollDevice } from './hooks/useScrollDevice';
+export { useTimer } from './hooks/useTimer';
 export { useWebSocket } from './hooks/useWebSocket';
 
 export { If } from './utils/If';
@@ -49,6 +50,5 @@ export { Class } from './utils/Class';
 export { Switch } from './utils/Switch';
 export { Image } from './utils/Image';
 
-// for default import
 import ErrorBoundary from './utils/ErrorBoundary';
 export { ErrorBoundary };
