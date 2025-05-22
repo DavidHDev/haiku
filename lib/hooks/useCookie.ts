@@ -4,8 +4,6 @@ import { useCookieListener } from './useCookieListener';
 import { useSingleEffect } from './useSingleEffect';
 
 import {
-  parseToCookieType,
-  parseToDataType,
   getCookie,
   setCookie,
   deleteCookie,
