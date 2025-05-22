@@ -72,11 +72,6 @@ const config = {
             position: 'right',
           },
           {
-            to: 'https://ko-fi.com/davidhaz',
-            label: 'Sponsor',
-            position: 'right',
-          },
-          {
             position: 'right',
             label: 'v2.3.0',
             to: 'https://www.npmjs.com/package/react-haiku',

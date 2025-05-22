@@ -74,7 +74,6 @@ export default function Homepage() {
       <>
         <Link to="/docs/intro">DOCS</Link>
         <a rel='noreferrer' aria-label='github' target="_blank" href="https://github.com/DavidHDev/react-haiku">GITHUB</a>
-        <a rel='noreferrer' target="_blank" aria-label="Sponsor" href='https://ko-fi.com/davidhaz'>SPONSOR</a>
       </>
     )
   }
