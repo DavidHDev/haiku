@@ -17,7 +17,7 @@ export const useCookie = <T>(
 	expireDays = 365,
 ) => {
 	const [cookieValue, setCookieValue] = useState<T>(
-		parseToDataType<T>(parseToCookieType(getCookie(key))) ?? initialValue,
+		getCookie<T>(key) ?? initialValue,
 	);
 
 	useSingleEffect(() => {
