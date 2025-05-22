@@ -39,6 +39,7 @@ export { usePreventBodyScroll } from './hooks/usePreventBodyScroll';
 export { usePrevious } from './hooks/usePrevious';
 export { useKeyPress } from './hooks/useKeyPress';
 export { useScrollDevice } from './hooks/useScrollDevice';
+export { useWebSocket } from './hooks/useWebSocket';
 
 export { If } from './utils/If';
 export { Show } from './utils/Show';
