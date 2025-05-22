@@ -24,7 +24,12 @@ const Fallback: React.FC<FallbackProps> = ({ retry }) => {
 
 // Component that will intentionally cause an error
 const CrashComponent: React.FC = () => {
-  throw new Error('This is a test error inside the ErrorBoundary!');
+  // Only throw an error if window is defined (i.e., in a browser environment)
+  // This prevents the error during Docusaurus build (SSR)
+  if (typeof window !== 'undefined') {
+    throw new Error('This is a test error inside the ErrorBoundary!');
+  }
+  return <p>This component would normally throw an error to demonstrate the ErrorBoundary.</p>;
 };
 
 export const ErrorBoundaryDemo: React.FC = () => {
