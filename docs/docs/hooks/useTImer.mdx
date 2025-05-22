@@ -1,0 +1,58 @@
+# useTimer()
+
+The `useTimer` hook provides a simple way to manage a timer with start, pause, and reset functionalities. It supports both counting up and counting down with a customizable interval.
+
+### Import
+
+```jsx
+import { useTimer } from 'react-haiku';
+```
+
+### Usage
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import { UseTimerDemo } from '../../demo/UseTimerDemo.jsx';
+
+<BrowserOnly fallback={<div>Loading...</div>}>
+  {() => <UseTimerDemo />}
+</BrowserOnly>
+
+```jsx
+import { useTimer } from 'react-haiku';
+export const TimerComponent = () => {
+  const { time, isRunning, start, pause, reset } = useTimer({
+    startTime: 0,
+    endTime: 10,
+    interval: 1000,
+  });
+
+  return (
+    <div>
+      <p>Time: {time}</p>
+      <button onClick={start} disabled={isRunning}>
+        Start
+      </button>
+      <button onClick={pause} disabled={!isRunning}>
+        Pause
+      </button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+};
+```
+
+### API
+
+This hook accepts the following arguments:
+
+- `startTime` - the initial time value for the timer
+- `endTime` - the end time value for the timer
+- `interval` (number, default: `1000`)- the interval in milliseconds to update the timer value
+
+This hook returns an object with the following properties:
+
+- `time` - the current time value of the timer
+- `isRunning` - a boolean value indicating whether the timer is running
+- `start` - a function to start the timer
+- `pause` - a function to pause the timer
+- `reset` - a function to reset the timer
