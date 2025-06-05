@@ -1,0 +1,61 @@
+# usePermission()
+
+The `usePermission()` check browser permissions for querying state for various browser APIs
+
+### Import
+
+```jsx
+import { usePermission } from 'react-haiku';
+```
+
+### Usage
+
+import { UsePermissionDemo } from '../../demo/UsePermissionDemo.tsx';
+
+<UsePermissionDemo />
+
+```tsx
+import { useState } from 'react';
+import { usePermission } from 'react-haiku';
+
+export const Component = () => {
+  const state = usePermission("geolocation")
+  const [location, setLocation] = useState<GeolocationPosition | null>(null)
+
+  function handleGetCurrentPosition() {
+    if (state !== "prompt" && state !== "granted") return
+
+    navigator.geolocation.getCurrentPosition((location) => {
+      setLocation(location)
+    })
+  }
+
+  return (
+    <div>
+      <h3>Permission state: {state}</h3>
+
+      <pre>
+        {JSON.stringify(location ?? {}, null, 2)}
+      </pre>
+
+      <div>
+        <button onClick={handleGetCurrentPosition}>
+          Get current position
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+### API
+
+#### Arguments
+
+- `permission` - The name of the API whose permissions you want to query, such as the `PermissionName` and other described in the [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Permissions/query#name) documentation.
+
+#### Returns
+
+The the state of a requested permission, combining the standard `PermissionState` with additional internal states.
+  - `checking`: The permission state is being verified.
+  - `not-supported`: The permission check is not supported or an error occurred during verification.

@@ -1,12 +1,12 @@
 import { useRef, useEffect } from 'react';
 
-import { parseToCookieType, getCookies } from '../helpers/cookie';
+import { parseToCookieType, getCookies, parseToDataType } from '../helpers/cookie';
 
-export const useCookieListener = (
-  effect: (a: any, b: string) => void,
+export const useCookieListener = <T>(
+  effect: (a: T, b: string) => void,
   cookies: string[],
 ) => {
-  const cookieValues = useRef(getCookies(cookies));
+  const cookieValues = useRef<Record<string, unknown>>(getCookies(cookies));
 
   useEffect(() => {
     const cookieOnChange = () => {
@@ -24,7 +24,12 @@ export const useCookieListener = (
               [cookieKey]: currentCookie,
             };
 
-            effect(currentCookie, cookieKey);
+            const parsedValue = parseToDataType<T>(
+              parseToCookieType(currentCookie),
+            );
+            if (parsedValue !== undefined) {
+              effect(parsedValue, cookieKey);
+            }
           }
         },
       );

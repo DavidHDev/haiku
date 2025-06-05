@@ -1,6 +1,6 @@
 {
   "name": "react-haiku",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "React Hook & Utility Library",
   "sideEffects": false,
   "main": "./dist/index.js",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.8",
-    "@testing-library/react": "^16.0.0",
+    "@testing-library/react": "^16.3.0",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.2",
     "@types/react": "^18.2.14",
