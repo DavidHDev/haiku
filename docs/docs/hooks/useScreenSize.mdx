@@ -1,6 +1,6 @@
 # useScreenSize()
 
-The `useScreenSize()` hook allows responsive breakpoint detection in components. It returns helper methods (`equals`, `lessThan`, `greaterThan`) and a string method (`toString`) representing the current screen size: `xs`, `sm`, `md`, `lg`, `xl`, or `2xl for size bigger than 1535 pixel`.
+The `useScreenSize()` hook allows responsive breakpoint detection in components. It returns helper methods (`equals`, `lessThan`, `greaterThan` , `greaterThanEqual` , `lessThanEqual` ) and a string method (`toString`) representing the current screen size: `xs`, `sm`, `md`, `lg`, `xl`, or `2xl for size bigger than 1535 pixel`.
 
 ### Import
 
@@ -23,10 +23,12 @@ export const MyComponent = () => {
 
   return (
     <div>
-      <h1>Current Screen Size: {screenSize.toString()}</h1>
-      <p>Is the screen size medium? {screenSize.equals("md") ? "Yes" : "No"}</p>
-      <p>Is the screen size less than large? {screenSize.lessThan("lg") ? "Yes" : "No"}</p>
-      <p>Is the screen size greater than small? {screenSize.greaterThan("sm") ? "Yes" : "No"}</p>
+     <h1>Current Screen Size: {screenSize.toString()}</h1>
+      <p>Is the screen size medium ? {screenSize.eq("md") ? "Yes" : "No"}</p>
+      <p>Is the screen size less than large ? {screenSize.lt("lg") ? "Yes" : "No"}</p>
+      <p>Is the screen size greater than small ? {screenSize.gt("sm") ? "Yes" : "No"}</p>
+      <p>Is the screen size greater than or equal to small ? {screenSize.gte("sm") ? "Yes" : "No"}</p>
+      <p>Is the screen size less than or equal to small ? {screenSize.lte("sm") ? "Yes" : "No"}</p>
     </div>
   );
 };

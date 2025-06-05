@@ -1,51 +1,62 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useLayoutEffect } from 'react';
 
-// Breakpoint size mappings
 const breakpoints = {
   xs: 639,
   sm: 767,
   md: 1023,
   lg: 1279,
   xl: 1535,
-  '2xl': Infinity, // 2xl is anything above 1535px
+  '2xl': Infinity,
 };
 
-// Helper function to get the current breakpoint
 const getBreakpoint = (width: number): keyof typeof breakpoints => {
-  if (width <= breakpoints.xs) return 'xs';
-  if (width <= breakpoints.sm) return 'sm';
-  if (width <= breakpoints.md) return 'md';
-  if (width <= breakpoints.lg) return 'lg';
-  if (width <= breakpoints.xl) return 'xl';
-  return '2xl';
+  return (Object.keys(breakpoints) as (keyof typeof breakpoints)[])
+    .find(bp => width <= breakpoints[bp]) ?? '2xl';
 };
 
-// The custom hook
 export const useScreenSize = () => {
-  const [screenSize, setScreenSize] = useState<keyof typeof breakpoints>('xs');
+  const [screenSize, setScreenSize] = useState<keyof typeof breakpoints>(() =>
+    typeof window === 'undefined' ? 'xl' : getBreakpoint(window.innerWidth),
+  );
 
-  const handleResize = () => {
+  const handleResize = useCallback(() => {
     setScreenSize(getBreakpoint(window.innerWidth));
-  };
-
-  useEffect(() => {
-    handleResize(); // Set the initial size
-    window.addEventListener('resize', handleResize); // Update on window resize
-
-    return () => {
-      window.removeEventListener('resize', handleResize); // Cleanup on unmount
-    };
   }, []);
 
-  // Methods to check size
-  const equals = (size: keyof typeof breakpoints) => screenSize === size;
-  const lessThan = (size: keyof typeof breakpoints) => breakpoints[screenSize] < breakpoints[size];
-  const greaterThan = (size: keyof typeof breakpoints) => breakpoints[screenSize] > breakpoints[size];
+  useLayoutEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    let ticking = false;
+
+    const onResize = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        handleResize();
+        ticking = false;
+      });
+    };
+
+    // Initial measurement
+    handleResize();
+    window.addEventListener('resize', onResize);
+
+    return () => window.removeEventListener('resize', onResize);
+  }, [handleResize]);
+
+  const eq = (bp: keyof typeof breakpoints) => screenSize === bp;
+  const lt = (bp: keyof typeof breakpoints) => breakpoints[screenSize] < breakpoints[bp];
+  const gt = (bp: keyof typeof breakpoints) => breakpoints[screenSize] > breakpoints[bp];
+  const lte = (bp: keyof typeof breakpoints) => eq(bp) || lt(bp);
+  const gte = (bp: keyof typeof breakpoints) => eq(bp) || gt(bp);
+
 
   return {
-    equals,
-    lessThan,
-    greaterThan,
+    eq,
+    lt,
+    gt,
+    lte,
+    gte,
     toString: () => screenSize,
   };
 };
