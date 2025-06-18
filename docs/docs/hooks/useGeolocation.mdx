@@ -1,0 +1,109 @@
+# useGeolocation()
+
+The `useGeolocation()` hook provides access to the user's current geographical location using the browser's Geolocation API. It returns latitude and longitude coordinates and handles permission errors gracefully.
+
+### Import
+
+```jsx
+import { useGeolocation } from 'react-haiku';
+```
+
+### Usage
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import { UseGeolocationDemo } from '../../demo/UseGeolocationDemo.jsx';
+
+<BrowserOnly fallback={<div>Loading...</div>}>
+  {() => <UseGeolocationDemo />}
+</BrowserOnly>
+
+```jsx
+import { useGeolocation } from 'react-haiku';
+
+export const Component = () => {
+  const { latitude, longitude, error, loading } = useGeolocation();
+  
+  if (loading) {
+    return <div>Getting your location...</div>;
+  }
+  
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+  
+  return (
+    <div>
+      <p>Latitude: {latitude}</p>
+      <p>Longitude: {longitude}</p>
+    </div>
+  );
+};
+```
+
+### Advanced Usage
+
+```jsx
+import { useGeolocation } from 'react-haiku';
+
+export const Component = () => {
+  const { latitude, longitude, error, loading } = useGeolocation({
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 60000,
+    watch: true // Continuously watch position changes
+  });
+  
+  return (
+    <div>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {latitude && longitude && (
+        <div>
+          <p>Current Location:</p>
+          <p>Lat: {latitude.toFixed(6)}</p>
+          <p>Lng: {longitude.toFixed(6)}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+```
+
+### Options
+
+The `useGeolocation` hook accepts an optional configuration object:
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `enableHighAccuracy` | `boolean` | `false` | Indicates that the application would like to receive the most accurate results possible |
+| `timeout` | `number` | `5000` | Maximum length of time (in milliseconds) that is allowed to pass before a timeout error occurs |
+| `maximumAge` | `number` | `0` | Maximum age in milliseconds of a possible cached position that is acceptable to return |
+| `watch` | `boolean` | `false` | If true, the hook will continuously watch for position changes instead of getting the position once |
+
+### Return Values
+
+The hook returns an object with the following properties:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `latitude` | `number \| null` | The latitude coordinate of the current position |
+| `longitude` | `number \| null` | The longitude coordinate of the current position |
+| `error` | `GeolocationError \| null` | Error object containing code and message if an error occurred |
+| `loading` | `boolean` | Indicates whether the geolocation request is in progress |
+
+### Error Handling
+
+The hook handles various types of geolocation errors:
+
+- **Permission Denied**: User denied the request for geolocation
+- **Position Unavailable**: Location information is unavailable
+- **Timeout**: The request to get user location timed out
+- **Not Supported**: Geolocation is not supported by the browser
+
+### Browser Support
+
+This hook requires the browser to support the Geolocation API. Most modern browsers support this feature, but users must grant permission for the website to access their location.
+
+### Privacy Note
+
+Always inform users why you need their location data and respect their privacy choices. The geolocation feature requires explicit user permission.
