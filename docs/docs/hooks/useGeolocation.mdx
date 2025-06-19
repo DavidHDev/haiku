@@ -1,0 +1,60 @@
+# useGeolocation()
+
+The `useGeolocation()` hook provides access to the user's current geographical location using the browser's Geolocation API.
+
+### Import
+
+```jsx
+import { useGeolocation } from 'react-haiku';
+```
+
+### Usage
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import { UseGeolocationDemo } from '../../demo/UseGeolocationDemo.jsx';
+
+<BrowserOnly fallback={<div>Loading...</div>}>
+  {() => <UseGeolocationDemo />}
+</BrowserOnly>
+
+```jsx
+import { useGeolocation } from 'react-haiku';
+
+export const Component = () => {
+  const { latitude, longitude, error, loading } = useGeolocation({
+    enableHighAccuracy: true,
+    timeout: 10000,
+  });
+
+  if (loading) {
+    return <div>Getting your location...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  return (
+    <div>
+      <p>Latitude: {latitude}</p>
+      <p>Longitude: {longitude}</p>
+    </div>
+  );
+};
+```
+
+### API
+
+This hook accepts an optional configuration object with the following properties:
+
+- `enableHighAccuracy` - boolean to request the most accurate results possible, defaults to `false`
+- `timeout` - maximum time in milliseconds to wait before timeout, defaults to `5000`
+- `maximumAge` - maximum age of cached position in milliseconds, defaults to `0`
+- `watch` - boolean to continuously watch for position changes, defaults to `false`
+
+The hook returns an object with:
+
+- `latitude` - the latitude coordinate or `null`
+- `longitude` - the longitude coordinate or `null`
+- `error` - error object with `code` and `message` properties, or `null`
+- `loading` - boolean indicating if the request is in progress
