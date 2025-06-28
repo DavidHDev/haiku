@@ -1,0 +1,58 @@
+# Classes
+
+The `Classes` component is a utility component that conditionally applies different sets of classes based on multiple independent conditions simultaneously.
+
+### Import
+
+```jsx
+import { Classes } from 'react-haiku';
+```
+
+### Usage
+
+import { ClassesDemo } from '../../demo/ClassDemo.jsx';
+
+<ClassesDemo />
+
+```jsx
+import React, { useState } from 'react';
+import { Class } from 'react-haiku';
+
+const Component = () => {
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleActive = () => {
+    setIsActive(!isActive);
+  };
+
+  return (
+    <div>
+      <button onClick={toggleActive}>
+        {isActive ? 'Deactivate' : 'Activate'}
+      </button>
+
+      <Class
+        className="box"
+        condition={isActive}
+        toggleClass="active"
+        as="section"
+      >
+        This is a box that will toggle its class based on the button click.
+      </Class>
+    </div>
+  );
+};
+
+export default Component;
+```
+
+### API
+
+The component accepts the following props:
+
+- `className` - The initial class name for the `div` element. Defaults to an empty string.
+- `condition` - The condition to determine whether to apply the `toggleClass` or not. Defaults to `false`.
+- `toggleClass` - The class name to be toggled based on the condition. Defaults to an empty string.
+- `children` - The content to be rendered inside the `div` element.
+- `as (ElementType)`: The type of HTML element to render. Defaults to div. You can specify other elements like section, article, etc.
+- `[key: string]: any`: Any additional props to be passed to the element.

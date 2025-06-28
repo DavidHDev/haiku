@@ -97,23 +97,25 @@ input:focus {
   width: 12px;
   height: 12px;
   background-color: #f5f5f5;
-  clip-path: polygon(50% 0%,
-      100% 40%,
-      0% 60%,
-      17% 60%,
-      50% 83%,
-      83% 60%,
-      100% 60%,
-      50% 100%,
-      0% 60%,
-      100% 40%,
-      83% 40%,
-      50% 17%,
-      16.67% 40%,
-      0% 40%);
+  clip-path: polygon(
+    50% 0%,
+    100% 40%,
+    0% 60%,
+    17% 60%,
+    50% 83%,
+    83% 60%,
+    100% 60%,
+    50% 100%,
+    0% 60%,
+    100% 40%,
+    83% 40%,
+    50% 17%,
+    16.67% 40%,
+    0% 40%
+  );
 }
 
-.demo-dropdown>select {
+.demo-dropdown > select {
   appearance: none !important;
   -webkit-appearance: none;
   width: 100%;
@@ -221,9 +223,33 @@ h4 {
   font-size: 0.9em;
 }
 
+.demo-card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-block: 50px;
+  padding-inline: 20px;
+  transition: box-shadow 0.2s ease, border 0.2s ease;
+}
+
+.demo-card--elevated {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.demo-card--bordered {
+  border: 1px solid #efefef;
+}
+
+.demo-card--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Animations */
 @keyframes bounceIn {
-
   from,
   20%,
   40%,

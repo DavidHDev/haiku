@@ -28,7 +28,7 @@ interface ClassProps {
  * @returns The rendered Class component.
  */
 
-export const Class: React.FC<ClassProps> = ({
+export const Classes: React.FC<ClassProps> = ({
   className = '',
   toggleClasses = {},
   children,
