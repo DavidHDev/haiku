@@ -10,35 +10,62 @@ import { Classes } from 'react-haiku';
 
 ### Usage
 
-import { ClassesDemo } from '../../demo/ClassDemo.jsx';
+import { ClassesDemo } from '../../demo/ClassesDemo.jsx';
 
 <ClassesDemo />
 
 ```jsx
 import React, { useState } from 'react';
-import { Class } from 'react-haiku';
+import { Classes } from 'react-haiku';
 
 const Component = () => {
-  const [isActive, setIsActive] = useState(false);
-
-  const toggleActive = () => {
-    setIsActive(!isActive);
-  };
+  const [hasError, setHasError] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   return (
     <div>
-      <button onClick={toggleActive}>
-        {isActive ? 'Deactivate' : 'Activate'}
-      </button>
+      <div>
+        <div>
+          <label htmlFor="error">Error</label>
+          <input
+            type="checkbox"
+            id="error"
+            value={hasError}
+            onChange={() => setHasError(!hasError)}
+          />
+        </div>
 
-      <Class
-        className="box"
-        condition={isActive}
-        toggleClass="active"
-        as="section"
-      >
-        This is a box that will toggle its class based on the button click.
-      </Class>
+        <div>
+          <label htmlFor="filled">Filled</label>
+          <input
+            type="checkbox"
+            id="filled"
+            value={isFilled}
+            onChange={() => setIsFilled(!isFilled)}
+          />
+        </div>
+
+        <div>
+          <label for="disabled">Disabled</label>
+          <input
+            type="checkbox"
+            id="disabled"
+            value={isDisabled}
+            onChange={() => setIsDisabled(!isDisabled)}
+          />
+        </div>
+      </div>
+
+      <Classes
+        as="input"
+        className="demo-classes-input"
+        toggleClasses={{
+          'demo-classes-input--error': hasError,
+          'demo-classes-input--filled': isFilled,
+          'demo-classes-input--disabled': isDisabled,
+        }}
+      />
     </div>
   );
 };
@@ -50,9 +77,8 @@ export default Component;
 
 The component accepts the following props:
 
-- `className` - The initial class name for the `div` element. Defaults to an empty string.
-- `condition` - The condition to determine whether to apply the `toggleClass` or not. Defaults to `false`.
-- `toggleClass` - The class name to be toggled based on the condition. Defaults to an empty string.
-- `children` - The content to be rendered inside the `div` element.
+- `className` - The initial class name for the element. Defaults to an empty string.
+- `toggleClasses` - An object with condition-to-classes mappings. Defaults to an empty object.
+- `children` - The content to be rendered inside the element.
 - `as (ElementType)`: The type of HTML element to render. Defaults to div. You can specify other elements like section, article, etc.
 - `[key: string]: any`: Any additional props to be passed to the element.

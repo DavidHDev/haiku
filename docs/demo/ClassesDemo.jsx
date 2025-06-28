@@ -1,27 +1,36 @@
 import React, { useState } from 'react';
 import { Classes } from 'react-haiku';
 
-export const ClassDemo = () => {
-  const [isElevated, setIsElevated] = useState(false);
-  const [isBordered, setIsBordered] = useState(false);
+export const ClassesDemo = () => {
+  const [hasError, setHasError] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
   return (
     <div className="demo-container-center">
-      <div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          marginBlockEnd: '20px',
+        }}
+      >
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.5em',
-            marginBlockEnd: '10px',
           }}
         >
-          <span>Elevated</span>
+          <label htmlFor="error" style={{ marginBottom: '5px' }}>
+            Error
+          </label>
           <input
             type="checkbox"
-            value={isElevated}
-            onChange={() => setIsElevated(!isElevated)}
+            id="error"
+            value={hasError}
+            onChange={() => setHasError(!hasError)}
           />
         </div>
 
@@ -30,14 +39,16 @@ export const ClassDemo = () => {
             display: 'flex',
             alignItems: 'center',
             gap: '0.5em',
-            marginBlockEnd: '10px',
           }}
         >
-          <span>Bordered</span>
+          <label htmlFor="filled" style={{ marginBottom: '5px' }}>
+            Filled
+          </label>
           <input
             type="checkbox"
-            value={isBordered}
-            onChange={() => setIsBordered(!isBordered)}
+            id="filled"
+            value={isFilled}
+            onChange={() => setIsFilled(!isFilled)}
           />
         </div>
 
@@ -46,12 +57,14 @@ export const ClassDemo = () => {
             display: 'flex',
             alignItems: 'center',
             gap: '0.5em',
-            marginBlockEnd: '50px',
           }}
         >
-          <span>Disabled</span>
+          <label htmlFor="disabled" style={{ marginBottom: '5px' }}>
+            Disabled
+          </label>
           <input
             type="checkbox"
+            id="disabled"
             value={isDisabled}
             onChange={() => setIsDisabled(!isDisabled)}
           />
@@ -59,17 +72,14 @@ export const ClassDemo = () => {
       </div>
 
       <Classes
-        className="demo-card"
-        as="section"
+        as="input"
+        className="demo-classes-input"
         toggleClasses={{
-          'demo-card--elevated': isElevated,
-          'demo-card--bordered': isBordered,
-          'demo-card--disabled': isDisabled,
+          'demo-classes-input--error': hasError,
+          'demo-classes-input--filled': isFilled,
+          'demo-classes-input--disabled': isDisabled,
         }}
-      >
-        <h2>Card header</h2>
-        <p>Card content</p>
-      </Classes>
+      />
     </div>
   );
 };

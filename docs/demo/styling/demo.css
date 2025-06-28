@@ -223,27 +223,25 @@ h4 {
   font-size: 0.9em;
 }
 
-.demo-card {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-block: 50px;
-  padding-inline: 20px;
-  transition: box-shadow 0.2s ease, border 0.2s ease;
+.demo-classes-input {
+  background-color: transparent;
+  max-width: 200px;
+  color: #1a1a1a;
+  border-radius: 5rem;
+  height: 38px;
+  padding: 10px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.demo-card--elevated {
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+.demo-classes-input--error {
+  border-color: rgba(255, 0, 93, 1);
 }
 
-.demo-card--bordered {
-  border: 1px solid #efefef;
+.demo-classes-input--filled {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.demo-card--disabled {
+.demo-classes-input--disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
