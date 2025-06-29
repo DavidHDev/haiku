@@ -97,25 +97,23 @@ input:focus {
   width: 12px;
   height: 12px;
   background-color: #f5f5f5;
-  clip-path: polygon(
-    50% 0%,
-    100% 40%,
-    0% 60%,
-    17% 60%,
-    50% 83%,
-    83% 60%,
-    100% 60%,
-    50% 100%,
-    0% 60%,
-    100% 40%,
-    83% 40%,
-    50% 17%,
-    16.67% 40%,
-    0% 40%
-  );
+  clip-path: polygon(50% 0%,
+      100% 40%,
+      0% 60%,
+      17% 60%,
+      50% 83%,
+      83% 60%,
+      100% 60%,
+      50% 100%,
+      0% 60%,
+      100% 40%,
+      83% 40%,
+      50% 17%,
+      16.67% 40%,
+      0% 40%);
 }
 
-.demo-dropdown > select {
+.demo-dropdown>select {
   appearance: none !important;
   -webkit-appearance: none;
   width: 100%;
@@ -233,6 +231,16 @@ h4 {
   transition: border 0.2s ease, border-radius 0.2s ease, opacity 0.2s ease;
 }
 
+.demo-classes-form-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.demo-classes-form-control label {
+  margin-block-end: 5px;
+}
+
 .demo-classes-input--error {
   border: 2px solid rgba(255, 0, 93, 1);
 }
@@ -248,6 +256,7 @@ h4 {
 
 /* Animations */
 @keyframes bounceIn {
+
   from,
   20%,
   40%,

@@ -16,16 +16,8 @@ export const ClassesDemo = () => {
           marginBlockEnd: '20px',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5em',
-          }}
-        >
-          <label htmlFor="error" style={{ marginBottom: '5px' }}>
-            Error
-          </label>
+        <div className="demo-classes-form-control">
+          <label htmlFor="error">Error</label>
           <input
             type="checkbox"
             id="error"
@@ -34,16 +26,8 @@ export const ClassesDemo = () => {
           />
         </div>
 
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5em',
-          }}
-        >
-          <label htmlFor="squared" style={{ marginBottom: '5px' }}>
-            Squared
-          </label>
+        <div className="demo-classes-form-control">
+          <label htmlFor="squared">Squared</label>
           <input
             type="checkbox"
             id="squared"
@@ -52,16 +36,8 @@ export const ClassesDemo = () => {
           />
         </div>
 
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5em',
-          }}
-        >
-          <label htmlFor="disabled" style={{ marginBottom: '5px' }}>
-            Disabled
-          </label>
+        <div className="demo-classes-form-control">
+          <label htmlFor="disabled">Disabled</label>
           <input
             type="checkbox"
             id="disabled"
