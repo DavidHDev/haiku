@@ -221,6 +221,39 @@ h4 {
   font-size: 0.9em;
 }
 
+.demo-classes-input {
+  background-color: #272828;
+  color: #f5f5f5 !important;
+  max-width: 200px;
+  border-radius: 5rem;
+  height: 38px;
+  padding: 10px;
+  transition: border 0.2s ease, border-radius 0.2s ease, opacity 0.2s ease;
+}
+
+.demo-classes-form-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.demo-classes-form-control label {
+  margin-block-end: 5px;
+}
+
+.demo-classes-input--error {
+  border: 2px solid rgba(255, 0, 93, 1);
+}
+
+.demo-classes-input--squared {
+  border-radius: 0;
+}
+
+.demo-classes-input--disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
 /* Animations */
 @keyframes bounceIn {
 

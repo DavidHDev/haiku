@@ -140,6 +140,7 @@ export default Component;
 - [`Show`](https://reacthaiku.dev/docs/utilities/show) - Component for complex conditional rendering!
 - [`For`](https://reacthaiku.dev/docs/utilities/for) - Dynamic rendering component with automatic key assignment!
 - [`RenderAfter`](https://reacthaiku.dev/docs/utilities/renderAfter) - Component that renders its children after a set delay.
+- [`Classes`](https://reacthaiku.dev/docs/utilities/classes) - Component that conditionally applies different sets of classes based on multiple independent conditions simultaneously.
 
 ## Maintainers
 
