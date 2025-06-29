@@ -224,25 +224,25 @@ h4 {
 }
 
 .demo-classes-input {
-  background-color: transparent;
+  background-color: #272828;
+  color: #f5f5f5 !important;
   max-width: 200px;
-  color: #1a1a1a;
   border-radius: 5rem;
   height: 38px;
   padding: 10px;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: border 0.2s ease, border-radius 0.2s ease, opacity 0.2s ease;
 }
 
 .demo-classes-input--error {
-  border-color: rgba(255, 0, 93, 1);
+  border: 2px solid rgba(255, 0, 93, 1);
 }
 
-.demo-classes-input--filled {
-  background-color: rgba(0, 0, 0, 0.1);
+.demo-classes-input--squared {
+  border-radius: 0;
 }
 
 .demo-classes-input--disabled {
-  opacity: 0.5;
+  opacity: 0.2;
   cursor: not-allowed;
 }
 

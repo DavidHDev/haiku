@@ -3,7 +3,7 @@ import { Classes } from 'react-haiku';
 
 export const ClassesDemo = () => {
   const [hasError, setHasError] = useState(false);
-  const [isFilled, setIsFilled] = useState(false);
+  const [isSquared, setIsSquared] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
   return (
@@ -41,14 +41,14 @@ export const ClassesDemo = () => {
             gap: '0.5em',
           }}
         >
-          <label htmlFor="filled" style={{ marginBottom: '5px' }}>
-            Filled
+          <label htmlFor="squared" style={{ marginBottom: '5px' }}>
+            Squared
           </label>
           <input
             type="checkbox"
-            id="filled"
-            value={isFilled}
-            onChange={() => setIsFilled(!isFilled)}
+            id="squared"
+            value={isSquared}
+            onChange={() => setIsSquared(!isSquared)}
           />
         </div>
 
@@ -73,10 +73,11 @@ export const ClassesDemo = () => {
 
       <Classes
         as="input"
+        disabled={isDisabled}
         className="demo-classes-input"
         toggleClasses={{
           'demo-classes-input--error': hasError,
-          'demo-classes-input--filled': isFilled,
+          'demo-classes-input--squared': isSquared,
           'demo-classes-input--disabled': isDisabled,
         }}
       />

@@ -20,7 +20,7 @@ import { Classes } from 'react-haiku';
 
 const Component = () => {
   const [hasError, setHasError] = useState(false);
-  const [isFilled, setIsFilled] = useState(false);
+  const [isSquared, setIsSquared] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
   return (
@@ -37,12 +37,12 @@ const Component = () => {
         </div>
 
         <div>
-          <label htmlFor="filled">Filled</label>
+          <label htmlFor="squared">Squared</label>
           <input
             type="checkbox"
-            id="filled"
-            value={isFilled}
-            onChange={() => setIsFilled(!isFilled)}
+            id="squared"
+            value={isSquared}
+            onChange={() => setIsSquared(!isSquared)}
           />
         </div>
 
@@ -62,7 +62,7 @@ const Component = () => {
         className="demo-classes-input"
         toggleClasses={{
           'demo-classes-input--error': hasError,
-          'demo-classes-input--filled': isFilled,
+          'demo-classes-input--squared': isSquared,
           'demo-classes-input--disabled': isDisabled,
         }}
       />
