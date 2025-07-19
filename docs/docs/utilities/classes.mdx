@@ -24,49 +24,15 @@ const Component = () => {
   const [isDisabled, setIsDisabled] = useState(false);
 
   return (
-    <div>
-      <div>
-        <div>
-          <label htmlFor="error">Error</label>
-          <input
-            type="checkbox"
-            id="error"
-            value={hasError}
-            onChange={() => setHasError(!hasError)}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="squared">Squared</label>
-          <input
-            type="checkbox"
-            id="squared"
-            value={isSquared}
-            onChange={() => setIsSquared(!isSquared)}
-          />
-        </div>
-
-        <div>
-          <label for="disabled">Disabled</label>
-          <input
-            type="checkbox"
-            id="disabled"
-            value={isDisabled}
-            onChange={() => setIsDisabled(!isDisabled)}
-          />
-        </div>
-      </div>
-
-      <Classes
-        as="input"
-        className="demo-classes-input"
-        toggleClasses={{
-          'demo-classes-input--error': hasError,
-          'demo-classes-input--squared': isSquared,
-          'demo-classes-input--disabled': isDisabled,
-        }}
-      />
-    </div>
+    <Classes
+      as="input"
+      className="demo-classes-input"
+      toggleClasses={{
+        'demo-classes-input--error': hasError,
+        'demo-classes-input--squared': isSquared,
+        'demo-classes-input--disabled': isDisabled,
+      }}
+    />
   );
 };
 
