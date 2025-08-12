@@ -6,7 +6,7 @@
 	<img src="./media/haiku-logo-orange.svg" alt="react-haiku" height="200">
 	<br>
 	<br>
-	<b>A clean, lightweight collection of React Hooks & Utilities!</b>
+	<b>A clean, lightweight collection of React Hooks & Utilities</b>
 	<br>
 	<br>
 	<br>
@@ -26,9 +26,6 @@
 - [Contributing](#contributing)
 - [Maintainers](#maintainers)
 - [License](#license)
-
----
-
 
 ## Documentation
 
@@ -66,7 +63,7 @@ pnpm install react-haiku
 
 <br>
 
-#### Unit Testing with Jest and React Testing Library
+## Unit Testing
 
 This project uses [jest](https://jestjs.io/) as the testing framework and [React Testing Library (RTL)](https://testing-library.com/docs/react-testing-library/intro) for testing React components and hooks.
 
