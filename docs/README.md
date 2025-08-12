@@ -134,6 +134,7 @@ export default Component;
 - [`useDeviceOS()`](https://reacthaiku.dev/docs/hooks/useDeviceOS) - Detects the user's operating system, including mobile emulators, and uses string manipulation for identifying unique or new OS versions.
 - [`usePreventBodyScroll()`](https://reacthaiku.dev/docs/hooks/usePreventBodyScroll) - Disables body scrolling when active and restores it upon deactivation or component unmounting. It provides a boolean state, a setter, and a toggle function for dynamic scroll control.
 - [`useGeolocation()`](https://reacthaiku.dev/docs/hooks/useGeolocation) - Access the user's current geographical location using the browser's Geolocation API. Returns latitude and longitude coordinates and handles permission errors gracefully.
+- [`useScreenSize()`](https://reacthaiku.dev/docs/hooks/useScreenSize) - Provide the breakponint values in string method `toString`  with other method `equals` , `lessThan` , `greaterThan` `greaterThanEqual`  `lessThanEqual` value in `True/False`.
 
 ### Utilities
 
