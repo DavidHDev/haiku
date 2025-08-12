@@ -1,0 +1,50 @@
+# Classes
+
+The `Classes` component is a utility component that conditionally applies different sets of classes based on multiple independent conditions simultaneously.
+
+### Import
+
+```jsx
+import { Classes } from 'react-haiku';
+```
+
+### Usage
+
+import { ClassesDemo } from '../../demo/ClassesDemo.jsx';
+
+<ClassesDemo />
+
+```jsx
+import React, { useState } from 'react';
+import { Classes } from 'react-haiku';
+
+const Component = () => {
+  const [hasError, setHasError] = useState(false);
+  const [isSquared, setIsSquared] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  return (
+    <Classes
+      as="input"
+      className="demo-classes-input"
+      toggleClasses={{
+        'demo-classes-input--error': hasError,
+        'demo-classes-input--squared': isSquared,
+        'demo-classes-input--disabled': isDisabled,
+      }}
+    />
+  );
+};
+
+export default Component;
+```
+
+### API
+
+The component accepts the following props:
+
+- `className` - The initial class name for the element. Defaults to an empty string.
+- `toggleClasses` - An object with condition-to-classes mappings. Defaults to an empty object.
+- `children` - The content to be rendered inside the element.
+- `as (ElementType)`: The type of HTML element to render. Defaults to div. You can specify other elements like section, article, etc.
+- `[key: string]: any`: Any additional props to be passed to the element.
