@@ -43,6 +43,8 @@ export { useScreenSize } from './hooks/useScreenSize';
 export { usePermission, UsePermissionState } from './hooks/usePermission';
 export { useTimer } from './hooks/useTimer';
 export { useWebSocket } from './hooks/useWebSocket';
+export { useGeolocation } from './hooks/useGeolocation';
+
 export { If } from './utils/If';
 export { Show } from './utils/Show';
 export { For } from './utils/For';
