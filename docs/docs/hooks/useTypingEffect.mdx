@@ -1,0 +1,132 @@
+# useTypingEffect()
+
+The `useTypingEffect()` hook simulates a typing effect by progressively updating the state with randomized delays for a natural feel.
+
+### Import
+
+```jsx
+import { useTypingEffect } from 'react-haiku';
+```
+
+### Usage
+
+import { UseTypingEffectDemo } from '../../demo/UseTypingEffectDemo.jsx';
+
+<UseTypingEffectDemo />
+
+```jsx
+import { useTypingEffect } from 'react-haiku';
+
+export const Component = () => {
+    const { displayedText, isTyping, startTyping, reset } = useTypingEffect(
+        'Hello, welcome to my website!',
+        {
+            baseDelay: 50,
+            randomDelay: 100,
+            onComplete: () => console.log('Typing completed!')
+        }
+    );
+
+    return (
+        <div>
+            <p style={{ fontFamily: 'monospace', fontSize: '18px' }}>
+                {displayedText}
+                {isTyping && <span>|</span>}
+            </p>
+            <button onClick={startTyping} disabled={isTyping}>
+                {isTyping ? 'Typing...' : 'Start Typing'}
+            </button>
+            <button onClick={reset}>Reset</button>
+        </div>
+    );
+};
+```
+
+### Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `text` | `string` | ✅ | - | The text to animate. Must be a non-empty string. |
+| `options` | `UseTypingEffectOptions` | ❌ | `{}` | Configuration options for the typing effect. |
+
+### Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `baseDelay` | `number` | `50` | Base delay between characters in milliseconds. |
+| `randomDelay` | `number` | `100` | Maximum additional random delay in milliseconds for natural variation. |
+| `onComplete` | `() => void` | `undefined` | Callback function called when typing animation completes. |
+
+### Return Value
+
+The hook returns an object with the following properties:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `displayedText` | `string` | The currently displayed portion of the text. |
+| `isTyping` | `boolean` | Whether the typing animation is currently running. |
+| `startTyping` | `() => void` | Function to start the typing animation. Resets state if called multiple times. |
+| `reset` | `() => void` | Function to reset the displayed text to empty and stop any active animation. |
+
+### Examples
+
+#### Basic Usage
+
+```jsx
+const { displayedText, startTyping } = useTypingEffect('Hello World!');
+```
+
+#### With Custom Timing
+
+```jsx
+const { displayedText, isTyping, startTyping } = useTypingEffect(
+    'This types slower with more variation...',
+    {
+        baseDelay: 100,      // Slower base speed
+        randomDelay: 200     // More random variation
+    }
+);
+```
+
+#### With Completion Callback
+
+```jsx
+const [isComplete, setIsComplete] = useState(false);
+
+const { displayedText, startTyping } = useTypingEffect(
+    'Thanks for reading!',
+    {
+        onComplete: () => setIsComplete(true)
+    }
+);
+```
+
+#### Multiple Typing Effects
+
+```jsx
+const intro = useTypingEffect('Hello, I am');
+const name = useTypingEffect('John Doe', { baseDelay: 80 });
+
+const handleStart = () => {
+    intro.startTyping();
+    // Start second effect after first completes
+    setTimeout(() => name.startTyping(), 2000);
+};
+```
+
+### Features
+
+- ✅ **Natural Typing Feel**: Uses randomized delays between characters
+- ✅ **Configurable Speed**: Customize base delay and random variation
+- ✅ **Reset Support**: Multiple calls to `startTyping()` reset and restart
+- ✅ **Completion Callback**: Know when typing animation finishes
+- ✅ **TypeScript Support**: Fully typed with comprehensive interfaces
+- ✅ **Cleanup**: Automatic timer cleanup on unmount
+
+### Notes
+
+- The `text` parameter must be a non-empty string, otherwise the hook will throw an error
+- Calling `startTyping()` multiple times will reset the current animation and start fresh
+- The hook automatically cleans up any pending timers when the component unmounts
+- Random delays create a more natural typing rhythm compared to fixed intervals
+- The `isTyping` state can be used to show/hide typing indicators or disable controls
