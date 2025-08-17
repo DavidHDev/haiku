@@ -42,32 +42,6 @@ export const Component = () => {
 };
 ```
 
-### Parameters
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `text` | `string` | ✅ | - | The text to animate. Must be a non-empty string. |
-| `options` | `UseTypingEffectOptions` | ❌ | `{}` | Configuration options for the typing effect. |
-
-### Options
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `baseDelay` | `number` | `50` | Base delay between characters in milliseconds. |
-| `randomDelay` | `number` | `100` | Maximum additional random delay in milliseconds for natural variation. |
-| `onComplete` | `() => void` | `undefined` | Callback function called when typing animation completes. |
-
-### Return Value
-
-The hook returns an object with the following properties:
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `displayedText` | `string` | The currently displayed portion of the text. |
-| `isTyping` | `boolean` | Whether the typing animation is currently running. |
-| `startTyping` | `() => void` | Function to start the typing animation. Resets state if called multiple times. |
-| `reset` | `() => void` | Function to reset the displayed text to empty and stop any active animation. |
-
 ### Examples
 
 #### Basic Usage
@@ -130,3 +104,21 @@ const handleStart = () => {
 - The hook automatically cleans up any pending timers when the component unmounts
 - Random delays create a more natural typing rhythm compared to fixed intervals
 - The `isTyping` state can be used to show/hide typing indicators or disable controls
+
+### Parameters
+
+- **`text`** (string, required) - The text to animate. Must be a non-empty string.
+- **`options`** (UseTypingEffectOptions, optional) - Configuration options for the typing effect.
+
+### Options
+
+- **`baseDelay`** (number, default: 50) - Base delay between characters in milliseconds.
+- **`randomDelay`** (number, default: 100) - Maximum additional random delay in milliseconds for natural variation.
+- **`onComplete`** (function, optional) - Callback function called when typing animation completes.
+
+### Return Value
+
+- **`displayedText`** (string) - The currently displayed portion of the text.
+- **`isTyping`** (boolean) - Whether the typing animation is currently running.
+- **`startTyping`** (function) - Function to start the typing animation. Resets state if called multiple times.
+- **`reset`** (function) - Function to reset the displayed text to empty and stop any active animation.
